@@ -92,7 +92,7 @@ campsiteRouter.route('/:campsiteId/comments')
     .catch(err => next(err));
 })
 .post(authenticate.verifyUser,(req, res, next) => {
-    Campsite.findById(req.params.campsiteId)
+    Campsite.create(req.params.campsiteId)
     .then(campsite => {
         if (campsite) {
             req.body.author = req.user._id;
